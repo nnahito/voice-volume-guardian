@@ -1,0 +1,4 @@
+venv/
+.idea/
+thread_test.py
+*.pyc
