@@ -19,7 +19,7 @@ $ venv\Scripts\activate
 $ pip install -r requirements.txt
 ```
 
-###（3）起動
+### （3）起動
 ```
 $ python main.py
 ```
