@@ -1,10 +1,8 @@
 import PySimpleGUI as sg
-import sound
 import threading
 import numpy as np
 import sounddevice as sd
-import playsound
-from concurrent.futures import ProcessPoolExecutor
+import simpleaudio
 
 is_start_volume_monitoring = False
 
@@ -13,8 +11,15 @@ def callback(indata, frames, time, status):
     volume_norm = np.linalg.norm(indata) * 10
     print(int(volume_norm))
 
+    play_obj = False
+    if play_obj is not False:
+        return
+
     if volume_norm > 50:
-        playsound.playsound("春日部つむぎ.wav")
+        wav_obj = simpleaudio.WaveObject.from_wave_file("春日部つむぎ.wav")
+        play_obj = wav_obj.play()
+        play_obj.wait_done()
+        play_obj = False
 
 
 def start_sound_volume_monitoring():
@@ -58,10 +63,10 @@ window = sg.Window('Sound Volume Guard', layout)
 # イベントループを使用してウィンドウを表示し、対話する
 record_thread = False
 while True:
-    print('最初')
     event, values = window.read()
     # ユーザーが終了したいのか、ウィンドウが閉じられたかどうかを確認してください
     if event == sg.WINDOW_CLOSED or event == '終了':
+        is_start_volume_monitoring = False
         break
 
     # 開始ボタンが押されたら
