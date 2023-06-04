@@ -13,21 +13,21 @@ on:
     branches:
       - main
 
-  # GitHub Actionsで行うジョブの定義
-  jobs:
-    windows-build:
-      # Ubuntu
-      runs-on: ubuntu-latest # windows-latest
-      # 実際のジョブ内容を記載
-      steps:
-        - name: Branchのチェックアウト
-          uses: actions/checkout@v3
-          with:
-            fetch-depth: '0'
+# GitHub Actionsで行うジョブの定義
+jobs:
+  windows-build:
+    # Ubuntu
+    runs-on: ubuntu-latest # windows-latest
+    # 実際のジョブ内容を記載
+    steps:
+      - name: Branchのチェックアウト
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
 
-        - name: タグの発行
-          uses: anothrNick/github-tag-action@1.64.0
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            WITH_V: true
-            REPO_OWNER: nnahito
+      - name: タグの発行
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          REPO_OWNER: nnahito
