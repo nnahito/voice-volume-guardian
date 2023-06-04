@@ -33,11 +33,6 @@ jobs:
           WITH_V: true
           REPO_OWNER: nnahito
 
-      - name: Pythonの準備 ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-
   create-release:
     # create-new-tagのjobが終わってから実行する
     needs: create-new-tag
@@ -53,6 +48,11 @@ jobs:
         with:
           fetch-depth: '0'
 
+      - name: Pythonの準備 ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
       - name: Pythonの関連パッケージのインストール
         run: |
           python -m pip install --upgrade pip
@@ -61,14 +61,14 @@ jobs:
 
       - name: exeの作成
         run: pyinstaller main.py --onefile --noconsole
-#
-#      - name: alert用の音源をリリース用のディレクトリに移動
-#        run: cp alert.wav dist/alert.wav
-#
-#      - name: リリース対象ディレクトリをZIPに圧縮
-#        uses: montudor/action-zip@v1
-#        with:
-#          args: zip -qq -r dist.zip dist/
+
+      - name: alert用の音源をリリース用のディレクトリに移動
+        run: cp alert.wav dist/alert.wav
+
+      - name: リリース対象ディレクトリをZIPに圧縮
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r dist.zip dist/
 #
 #      - name: exeファイルをReleasesに保存
 #        use: svenstaro/upload-release-action@v2
