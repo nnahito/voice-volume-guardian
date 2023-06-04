@@ -69,12 +69,12 @@ jobs:
         uses: montudor/action-zip@v1
         with:
           args: zip -qq -r dist.zip dist/
-#
-#      - name: exeファイルをReleasesに保存
-#        use: svenstaro/upload-release-action@v2
-#        with:
-#          repo_token: ${{ secrets.GITHUB_TOKEN }}
-#          asset_name: voice-volume-guardian
-#          tag: ${{ github.ref }}
-#          overwrite: true
-#          file: dist/
+
+      - name: exeファイルをReleasesに保存
+        use: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          asset_name: voice-volume-guardian
+          tag: ${{ github.ref }}
+          overwrite: true
+          file: dist/
