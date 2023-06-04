@@ -66,8 +66,7 @@ jobs:
         run: cp alert.wav dist/alert.wav
 
       - name: リリース対象ディレクトリをZIPに圧縮
-        with:
-          args: Compress-Archive -Path dist/* -Destination dist.zip
+        run: Compress-Archive -Path dist/* -Destination dist.zip
 
       - name: exeファイルをReleasesに保存
         uses: svenstaro/upload-release-action@v2
