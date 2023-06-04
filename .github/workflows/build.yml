@@ -77,6 +77,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           asset_name: voice-volume-guardian.zip
-          tag: ${{ RELEASE_VERSION }}
+          tag: ${{ echo $RELEASE_VERSION }}
           overwrite: true
           file: dist.zip
