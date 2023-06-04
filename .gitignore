@@ -6,3 +6,4 @@ thread_test.py
 build/
 dist/
 __pycache__/
+*.spec
