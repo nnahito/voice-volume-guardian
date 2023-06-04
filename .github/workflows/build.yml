@@ -49,10 +49,14 @@ jobs:
           fetch-depth: '0'
           lfs: true
 
+      - name: Set Tag Name
+        id: tag-name
+        run: echo "::set-output name=version::${GITHUB_REF##*/}"
+
       - name: echo tag name
         run: |
           echo "${TAG_NAME}"
-          echo "${{github.ref_name}}"
+          echo "${{steps.tag-name.outputs.version}}"
 
       - name: Pythonの準備 ${{ matrix.python-version }}
         uses: actions/setup-python@v4
