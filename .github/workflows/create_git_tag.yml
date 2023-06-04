@@ -15,7 +15,7 @@ on:
 
 # GitHub Actionsで行うジョブの定義
 jobs:
-  windows-build:
+  build:
     # Ubuntu
     runs-on: ubuntu-latest # windows-latest
     # 実際のジョブ内容を記載
