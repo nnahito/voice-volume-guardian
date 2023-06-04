@@ -16,7 +16,7 @@ def callback(indata, frames, time, status):
         return
 
     if volume_norm > 50:
-        wav_obj = simpleaudio.WaveObject.from_wave_file("春日部つむぎ.wav")
+        wav_obj = simpleaudio.WaveObject.from_wave_file("alert.wav")
         play_obj = wav_obj.play()
         play_obj.wait_done()
         play_obj = False
