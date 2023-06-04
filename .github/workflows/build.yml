@@ -16,7 +16,7 @@ on:
 # GitHub Actionsで行うジョブの定義
 jobs:
   create-new-tag:
-    # Ubuntu
+    # Windows環境で実行
     runs-on: windows-latest
     strategy:
       matrix:
