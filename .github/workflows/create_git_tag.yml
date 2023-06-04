@@ -7,11 +7,11 @@ on:
     # 対象ブランチ
     branches:
       - main
-  # プルリクエストがマージされた時に実行
-  pull_request:
-    # 対象ブランチ
-    branches:
-      - main
+#  # プルリクエストがマージされた時に実行
+#  pull_request:
+#    # 対象ブランチ
+#    branches:
+#      - main
 
 # GitHub Actionsで行うジョブの定義
 jobs:
