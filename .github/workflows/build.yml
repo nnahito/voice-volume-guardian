@@ -51,12 +51,11 @@ jobs:
 
       - name: Set Tag Name
         id: tag-name
-        run: echo "::set-output name=version::${GITHUB_REF##*/}"
+        run: echo TAG=`git describe --tags` >> "$GITHUB_ENV"
 
       - name: echo tag name
         run: |
-          echo "${TAG_NAME}"
-          echo "${{steps.tag-name.outputs.version}}"
+          echo "${{ env.TAG }}"
 
       - name: Pythonの準備 ${{ matrix.python-version }}
         uses: actions/setup-python@v4
