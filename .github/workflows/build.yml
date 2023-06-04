@@ -66,9 +66,8 @@ jobs:
         run: cp alert.wav dist/alert.wav
 
       - name: リリース対象ディレクトリをZIPに圧縮
-        uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r dist.zip dist/
+          args: Compress-Archive -Path dist/* -Destination dist.zip
 
       - name: exeファイルをReleasesに保存
         uses: svenstaro/upload-release-action@v2
@@ -77,4 +76,4 @@ jobs:
           asset_name: voice-volume-guardian
           tag: ${{ github.ref }}
           overwrite: true
-          file: dist/
+          file: dist.zip
