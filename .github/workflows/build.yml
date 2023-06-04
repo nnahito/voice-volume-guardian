@@ -54,23 +54,23 @@ jobs:
           - pip install -r requirements.txt
           - pip install pyinstaller
 
-      - name: exeの作成
-        run:
-          - pyinstaller main.py --onefile --noconsole
-
-      - name: alert用の音源をリリース用のディレクトリに移動
-        run: cp alert.wav dist/alert.wav
-
-      - name: リリース対象ディレクトリをZIPに圧縮
-        uses: montudor/action-zip@v1
-        with:
-          args: zip -qq -r dist.zip dist/
-
-      - name: exeファイルをReleasesに保存
-        use: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          asset_name: voice-volume-guardian
-          tag: ${{ github.ref }}
-          overwrite: true
-          file: dist/
+#      - name: exeの作成
+#        run:
+#          - pyinstaller main.py --onefile --noconsole
+#
+#      - name: alert用の音源をリリース用のディレクトリに移動
+#        run: cp alert.wav dist/alert.wav
+#
+#      - name: リリース対象ディレクトリをZIPに圧縮
+#        uses: montudor/action-zip@v1
+#        with:
+#          args: zip -qq -r dist.zip dist/
+#
+#      - name: exeファイルをReleasesに保存
+#        use: svenstaro/upload-release-action@v2
+#        with:
+#          repo_token: ${{ secrets.GITHUB_TOKEN }}
+#          asset_name: voice-volume-guardian
+#          tag: ${{ github.ref }}
+#          overwrite: true
+#          file: dist/
