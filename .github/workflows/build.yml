@@ -49,13 +49,10 @@ jobs:
           fetch-depth: '0'
           lfs: true
 
-      - name: Set output
-        run:  echo TAG_NAME=`git describe --tags` >> $GITHUB_ENV
-
       - name: echo tag name
         run: |
           echo "${TAG_NAME}"
-          echo "${{ env.TAG_NAME }}"
+          echo "${{github.ref_name}}"
 
       - name: Pythonの準備 ${{ matrix.python-version }}
         uses: actions/setup-python@v4
