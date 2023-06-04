@@ -43,9 +43,9 @@ jobs:
     needs: create-new-tag
     # Windows環境で実行
     runs-on: windows-latest
-    strategy:
-      matrix:
-        python-version: [ "3.10" ]
+#    strategy:
+#      matrix:
+#        python-version: [ "3.10" ]
 
     steps:
       - name: Pythonの関連パッケージのインストール
