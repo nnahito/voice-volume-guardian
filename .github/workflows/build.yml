@@ -45,7 +45,6 @@ jobs:
     steps:
       - name: Branchのチェックアウト
         uses: actions/checkout@v3
-        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
         with:
           fetch-depth: '0'
           lfs: true
@@ -80,6 +79,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           asset_name: voice-volume-guardian.zip
-          tag: ${{ RELEASE_VERSION }}
+          tag: ${{ GITHUB_REF#refs/*/ }}
           overwrite: true
           file: dist.zip
