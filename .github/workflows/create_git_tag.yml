@@ -6,7 +6,7 @@ on:
   push:
     # 対象ブランチ
     branches:
-      - main
+      - master
 #  # プルリクエストがマージされた時に実行
 #  pull_request:
 #    # 対象ブランチ
