@@ -28,3 +28,26 @@ jobs:
         with:
           fetch-depth: '0'
 
+      - name: タグの発行
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          REPO_OWNER: nnahito
+
+      - name: Pythonの準備 ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Pythonの関連パッケージのインストール
+        run:
+          - python -m pip install --upgrade pip
+          - pip install -r requirements.txt
+          - pip install pyinstaller
+
+      - name: exeの作成
+        run:
+          - pyinstaller main.py --onefile --noconsole
+
+      
