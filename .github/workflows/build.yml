@@ -51,11 +51,12 @@ jobs:
 
       - name: Set Tag Name
         id: tag-name
-        run: echo TAG=`git describe --tags` >> "$GITHUB_ENV"
+        run: $GITHUB_ENV[TAG] = git describe --tags
 
       - name: echo tag name
         run: |
           echo "${{ env.TAG }}"
+          echo "${{ $GITHUB_ENV[TAG] }}"
 
       - name: Pythonの準備 ${{ matrix.python-version }}
         uses: actions/setup-python@v4
