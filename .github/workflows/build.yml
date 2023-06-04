@@ -57,6 +57,8 @@ jobs:
         run: |
           echo "${{ env.TAG }}"
           echo $TAG
+          echo "${{ $TAG }}"
+          echo "${{ TAG }}"
 
       - name: Pythonの準備 ${{ matrix.python-version }}
         uses: actions/setup-python@v4
