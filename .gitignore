@@ -2,3 +2,7 @@ venv/
 .idea/
 thread_test.py
 *.pyc
+.spec
+build/
+dist/
+__pycache__/
