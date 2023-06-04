@@ -50,7 +50,7 @@ jobs:
           lfs: true
 
       - name: Set output
-        run: echo "TAG_NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+        run:  echo TAG=`git describe --tags` >> $GITHUB_ENV
 
       - name: echo tag name
         run: |
