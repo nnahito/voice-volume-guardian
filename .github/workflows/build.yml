@@ -59,8 +59,8 @@ jobs:
           pip install -r requirements.txt
           pip install pyinstaller
 
-#      - name: exeの作成
-#        run: pyinstaller main.py --onefile --noconsole
+      - name: exeの作成
+        run: pyinstaller main.py --onefile --noconsole
 #
 #      - name: alert用の音源をリリース用のディレクトリに移動
 #        run: cp alert.wav dist/alert.wav
