@@ -52,7 +52,7 @@ jobs:
 
       - name: echo tag name
         run: |
-          echo "${{ steps.bump.outputs.new_tag }}"
+          echo ${ steps.bump.outputs.new_tag }
 
       - name: Pythonの準備 ${{ matrix.python-version }}
         uses: actions/setup-python@v4
