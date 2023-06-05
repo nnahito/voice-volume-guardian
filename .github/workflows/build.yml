@@ -27,6 +27,7 @@ jobs:
           fetch-depth: '0'
 
       - name: タグの発行
+        id: bump
         uses: anothrNick/github-tag-action@1.64.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -49,15 +50,9 @@ jobs:
           fetch-depth: '0'
           lfs: true
 
-      - name: Set Tag Name
-        id: tag-name
-        run: $env["TAG"] = git describe --tags
-
       - name: echo tag name
         run: |
-          echo "${{ env }}"
-          echo $TAG
-          echo TAG
+          echo "${{ steps.bump.outputs.new_tag }}"
 
       - name: Pythonの準備 ${{ matrix.python-version }}
         uses: actions/setup-python@v4
@@ -84,6 +79,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           asset_name: voice-volume-guardian.zip
-          tag: ${{ env.TAG_NAME }}
+          tag: ${{ steps.bump.outputs.new_tag }}
           overwrite: true
           file: dist.zip
