@@ -45,7 +45,7 @@ def start_sound_volume_monitoring():
                 dtype='float32',
                 callback=callback
         ):
-            sd.sleep(int(duration * 1000))
+            sd.sleep(int(duration * 500))
 
 
 # ウィンドウの内容を定義する
