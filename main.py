@@ -5,17 +5,18 @@ import sounddevice as sd
 import simpleaudio
 
 is_start_volume_monitoring = False
+volume_threshold = 50
 
 
 def callback(indata, frames, time, status):
     volume_norm = np.linalg.norm(indata) * 10
-    print(int(volume_norm))
+    # print(int(volume_norm))
 
     play_obj = False
     if play_obj is not False:
         return
 
-    if volume_norm > 50:
+    if volume_norm > volume_threshold:
         wav_obj = simpleaudio.WaveObject.from_wave_file("alert.wav")
         play_obj = wav_obj.play()
         play_obj.wait_done()
@@ -73,6 +74,7 @@ while True:
     if event == "監視開始ボタン":
         # 監視開始
         if not is_start_volume_monitoring:
+            volume_threshold = int(values['デシベル'])
             is_start_volume_monitoring = True
             record_thread = threading.Thread(target=start_sound_volume_monitoring)
             record_thread.start()
