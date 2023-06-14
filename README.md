@@ -1,7 +1,11 @@
 # Sound Guard
 マイクに一定音量以上の入力があると、wavファイルを再生します
 
-## 使い方
+## ソフトウェアとして使いたい方
+Releasesよりダウンロードしてください
+https://github.com/nnahito/voice-volume-guardian/releases
+
+## 開発してみたい方
 ### （0）Python
 自分で入れてください。
 scoopとかでサクッと入れると楽。
