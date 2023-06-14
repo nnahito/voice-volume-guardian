@@ -6,6 +6,7 @@ import simpleaudio
 
 is_start_volume_monitoring = False
 volume_threshold = 50
+play_obj = False
 
 
 def callback(indata, frames, time, status):
